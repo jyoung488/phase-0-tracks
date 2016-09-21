@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+</head>
+<body>
+  <form action="success.html" method="post">
+    <div>
+      <label>Name:</label>
+      <input type="text" name="name">
+    </div>
+    <div>
+      <label>Address:</label>
+      <textarea name="address" cols="20" rows="4">
+      </textarea>
+    </div>
+    <div>
+      <label>State:</label>
+      <select name="State">
+      <option value="Alabama">
+      Alabama
+      </option>
+      <option value="Arkansas">
+      Arkansas
+      </option>
+      <option value="Alaska">
+      Alaska
+      </option>
+      </select>
+    </div>
+    <div>
+      <label>Do you want to subscribe to our newsletter?</label>
+      <input type="checkbox" name="Newsletter" value="Yes" />
+      Yes
+      <input type="checkbox" name="Newsletter" value="No" />
+      No
+      </div>
+      <div>
+        <label>How do you want us to contact you?</label>
+        <input type="radio" name="Contact" value="Phone" />
+        Phone
+        <input type="radio" name="Contact" value="Email" />
+        Email
+      </div>
+      <button type="Submit">Submit</button>
+  </form>
+</body>
+</html>
