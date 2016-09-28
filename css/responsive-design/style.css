@@ -48,8 +48,10 @@ main {
   display: inline-block;
 }
 
+/* Syntax reference for media query
 @media screen and (max-width: 500px) {
   body {
     background-color: hotpink;
   }
-}
+} */
+
