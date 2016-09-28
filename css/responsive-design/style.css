@@ -55,3 +55,14 @@ main {
   }
 } */
 
+@media screen and (max-width: 700px) {
+  #external-links {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  main {
+    width: 100%;
+  }
+}
