@@ -1,5 +1,7 @@
 body {
   max-width: 960px;
+  min-width: 240px;
+  padding: 100px;
 }
 
 blockquote {
