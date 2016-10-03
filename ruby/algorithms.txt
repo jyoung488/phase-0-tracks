@@ -1,0 +1,23 @@
+-I live on the 3rd floor
+-If robot is entering from the ground floor, press up arrow button until it lights up
+-When elevator doors open, robot enters the elevator
+    -Press button that says "3" until it lights up
+-If elevator reaches 3rd floor
+  -Exit elevator
+-If elevator reaches floor >3
+  -Press "3" button until it lights up
+-If elevator reaches floor <3
+  -Do not exit
+-Otherwise
+  -Press "3" button until it lights up
+
+-If elevator is on the 3rd floor
+  -Press down arrow button until it lights up
+-When elevator doors open, robot enters
+  -Press button that says "G" until it lights up
+-If elevator reaches ground floor
+  -Exit elevator
+-If elevator reaches floor >3
+  -Press "G" button until it lights up
+-If elevator reaches floor 1 or 2
+  -Do not exit
