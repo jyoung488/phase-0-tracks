@@ -21,3 +21,20 @@
   -Press "G" button until it lights up
 -If elevator reaches floor 1 or 2
   -Do not exit
+
+Real-Life Algorithm
+  -Until laundry hamper is full:
+    -Add dirty laundry to hamper
+
+  -When laundry hamper is full
+    -Take hamper to laundry room
+
+    -If machine is not being used:
+      -Add detergent
+      -Add dirty laundry until machine is full
+      -Close machine
+      -Add quarters
+      -Press start
+
+    -Otherwise:
+      -Wait
