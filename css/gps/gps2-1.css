@@ -1,0 +1,33 @@
+header {
+  background-color: white;
+}
+
+.column-1 {
+  width: 45%;
+  float: left;
+  background-color: gray;
+  margin: 10px;
+  padding: 5px;
+}
+
+.column-2 {
+  width: 45%;
+  color: white;
+  float: right;
+  margin: 10px;
+  padding: 5px;
+  background-image: url("http://static.simpledesktops.com/uploads/desktops/2016/08/11/Glasgow.png");
+}
+
+footer {
+    clear: both;
+    text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+body {
+  font-family: Arial
+}
