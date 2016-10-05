@@ -1,3 +1,10 @@
+puts "How many employees will be processed?"
+employee_amount = gets.to_i
+
+count=0
+
+while count < employee_amount
+
 puts "What is your name?"
 name = gets.chomp
 
@@ -47,3 +54,5 @@ else
   puts "Results inconclusive."
   
  end
+ count += 1
+end
