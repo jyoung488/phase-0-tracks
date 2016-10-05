@@ -20,11 +20,21 @@ garlic_bread = gets.chomp
 puts "Would you like to enroll in the company's health insurance? Yes/No"
 insurance = gets.chomp
 
+puts "List any allergies one by one, pressing 'Enter' after each one. Input 'Done' when you're finished."
+allergies = []
+
+until allergies.include? "done"
+    allergies << gets.chomp.downcase
+  end
+
+if allergies.include? "sunshine"
+  puts "Probably a vampire."
+
 ##If the employee got their age right
 ## and is willing to eat garlic bread or sign up for insurance
 ##the result is “Probably not a vampire.”
 
-if age == 2016-birthyear && (garlic_bread == "Yes" || insurance == "Yes") && !(name == "Drake Cula" || name == "Tu Fang")
+elsif age == 2016-birthyear && (garlic_bread == "Yes" || insurance == "Yes") && !(name == "Drake Cula" || name == "Tu Fang")
   puts "Probably not a vampire."
 
 ## If the employee got their age wrong
