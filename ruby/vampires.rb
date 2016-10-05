@@ -17,17 +17,17 @@ insurance = gets.chomp
 ## and is willing to eat garlic bread or sign up for insurance
 ##the result is “Probably not a vampire.”
 
-if age == 2016-birthyear && (garlic_bread == "Yes" || insurance == "Yes")
+if age == 2016-birthyear && (garlic_bread == "Yes" || insurance == "Yes") && !(name == "Drake Cula" || name == "Tu Fang")
   puts "Probably not a vampire."
 
 ## If the employee got their age wrong
 ## and hates garlic bread or waives insurance
 ##the result is “Probably a vampire.”
 
-elsif age != 2016-birthyear && (garlic_bread == "Yes" || insurance == "Yes")
+elsif age != 2016-birthyear && (garlic_bread == "Yes" || insurance == "Yes") && !(name == "Drake Cula" || name == "Tu Fang") && !(name == "Drake Cula" || name == "Tu Fang")
   puts "Probably a vampire."
 
-elsif age != 2016-birthyear && garlic_bread == "No" && insurance == "No"
+elsif age != 2016-birthyear && garlic_bread == "No" && insurance == "No" && !(name == "Drake Cula" || name == "Tu Fang")
    puts "Almost certainly a vampire."
 
 ## If the employee got their age wrong
@@ -45,5 +45,5 @@ elsif name == "Drake Cula" || name == "Tu Fang"
 ##Otherwise, print “Results inconclusive.”
 else
   puts "Results inconclusive."
-
-end
+  
+ end
