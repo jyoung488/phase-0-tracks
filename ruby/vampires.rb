@@ -66,3 +66,5 @@ else
  end
  count += 1
 end
+
+abort("Actually never mind! What do all these questions have to do with anything? Let's all be friends.")
