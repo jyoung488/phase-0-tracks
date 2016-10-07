@@ -33,23 +33,21 @@ they are
 =end
 
 def decrypt
-  alphabet = "abcdefghijklmnopqrstuvwxyz"
-  reverse_alpha = alphabet.reverse
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+reverse_alpha = alphabet.reverse
   
-  puts "Give me a secret"
-  secret = gets.chomp
+puts "Give me a string"
+secret = gets.chomp
+letters = secret.split("")
 
-index = 0
-  while index < secret.length
-    unless secret[index] == " "
-    secret[index] = secret[index].next
-
-    end
-    index += 1
+for x in letters [0..-1]
+  unless letters == " "
+  y = reverse_alpha.index(x).next
+  answer = reverse_alpha[y]
+  final_answer = answer.join("")
+  p final_answer
   end
-  
-  secret.split("")
-  
+end
 end
 
 decrypt
