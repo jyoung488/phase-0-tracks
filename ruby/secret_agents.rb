@@ -11,3 +11,5 @@ index = 0
   
   puts string
 end
+
+encrypt
