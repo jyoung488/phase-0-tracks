@@ -23,3 +23,12 @@ index = 0
 end
 
 encrypt
+
+=begin
+  
+Define a method called decrypt that takes a string and returns a string
+with each letter moved back one letter in the alphabet, keeping spaces as
+they are
+  
+=end
+
