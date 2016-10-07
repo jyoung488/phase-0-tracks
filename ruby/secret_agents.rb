@@ -32,3 +32,24 @@ they are
   
 =end
 
+def decrypt
+  alphabet = "abcdefghijklmnopqrstuvwxyz"
+  reverse_alpha = alphabet.reverse
+  
+  puts "Give me a secret"
+  secret = gets.chomp
+
+index = 0
+  while index < secret.length
+    unless secret[index] == " "
+    secret[index] = secret[index].next
+
+    end
+    index += 1
+  end
+  
+  secret.split("")
+  
+end
+
+decrypt
