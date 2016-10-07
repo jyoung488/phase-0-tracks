@@ -5,7 +5,9 @@ def encrypt
   
 index = 0
   while index < string.length
+    unless string[index] == " "
     string[index] = string[index].next
+    end
     index += 1
   end
   
