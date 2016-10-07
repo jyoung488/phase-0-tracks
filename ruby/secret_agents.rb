@@ -10,13 +10,16 @@ def encrypt(string)
 
 index = 0
   while index < string.length
-    unless string[index] == " "
+    unless string[index] == " " || string[index] == "z"
     string[index] = string[index].next
     end
     index += 1
   end
-  
-  puts string
+    if string.include? "z"
+      puts string.sub!("z", "a")
+    else
+     puts string
+  end
 end
 
 =begin
