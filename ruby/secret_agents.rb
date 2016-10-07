@@ -22,8 +22,6 @@ index = 0
   puts string
 end
 
-encrypt
-
 =begin
   
 Define a method called decrypt that takes a string and returns a string
@@ -33,21 +31,22 @@ they are
 =end
 
 def decrypt
-alphabet = "abcdefghijklmnopqrstuvwxyz"
+alphabet = "abcdefghijklmnopqrstuvwxyz "
 reverse_alpha = alphabet.reverse
-  
+index = 0
+
 puts "Give me a string"
 secret = gets.chomp
-letters = secret.split("")
+letters_array = secret.split("")
+answers = []
 
-for x in letters [0..-1]
-  unless letters == " "
+if x = (secret.length - 1)
+  for x in letters_array [0..-1]
+  unless letters_array == " "
   y = reverse_alpha.index(x).next
-  answer = reverse_alpha[y]
-  final_answer = answer.join("")
-  p final_answer
+  answers << reverse_alpha[y]
   end
 end
+  puts answers.join ("")
 end
-
-decrypt
+end
