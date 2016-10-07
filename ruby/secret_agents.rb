@@ -6,10 +6,7 @@ one letter in the alphabet, keeping spaces as they are.
   
 =end
 
-def encrypt
-  
-  puts "Give me a string"
-  string = gets.chomp
+def encrypt(string)
 
 index = 0
   while index < string.length
@@ -30,13 +27,11 @@ they are
   
 =end
 
-def decrypt
+def decrypt(secret)
 alphabet = "abcdefghijklmnopqrstuvwxyz "
 reverse_alpha = alphabet.reverse
 index = 0
 
-puts "Give me a string"
-secret = gets.chomp
 letters_array = secret.split("")
 answers = []
 
@@ -50,3 +45,8 @@ end
   puts answers.join ("")
 end
 end
+
+encrypt("abc")
+encrypt("zed")
+decrypt("bcd")
+decrypt("afe")
