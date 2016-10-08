@@ -32,7 +32,7 @@ they are
 =end
 
 def decrypt(secret)
-alphabet = "abcdefghijklmnopqrstuvwxyz "
+alphabet = "abcdefghijklmnopqrstuvwxyz"
 reverse_alpha = alphabet.reverse
 index = 0
 
@@ -66,18 +66,31 @@ of the first.
 # Asks question and expects user input
 
 puts "Would you like to encrypt or decrypt a password?"
-password_method = gets.chomp
+password_method = gets.chomp.downcase
 
 # Asks user for the password
 # Expects user input
 
 puts "What is the password?"
-password = gets.chomp
+password = gets.chomp.downcase
 
 # If password_method is encrypt, call the encrypt method using the
 # password input provided
 
+if password_method == "encrypt"
+  encrypt("#{password}")
+
 # If password_method is decrypt, call the decrypt method using the
 # password input provided
 
+elsif password_method == "decrypt"
+  decrypt("#{password}")
+
+else
+  abort("You're not authorized!")
+
+end
+
 # Exit program
+
+abort("Logging out for security purposes.")
