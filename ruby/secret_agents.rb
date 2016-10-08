@@ -19,6 +19,7 @@ index = 0
       puts string.sub!("z", "a")
     else
      puts string
+     secret = string
   end
 end
 
@@ -53,3 +54,10 @@ encrypt("abc")
 encrypt("zed")
 decrypt("bcd")
 decrypt("afe")
+decrypt(encrypt("swordfish"))
+
+=begin
+The nested methods work because Ruby understands to run the method in the
+inner-most parentheses first then runs the outer method with the value output
+of the first.
+=end
