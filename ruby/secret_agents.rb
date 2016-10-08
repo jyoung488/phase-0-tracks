@@ -61,3 +61,23 @@ The nested methods work because Ruby understands to run the method in the
 inner-most parentheses first then runs the outer method with the value output
 of the first.
 =end
+
+# Asks user if they would like to decrypt or encrypt
+# Asks question and expects user input
+
+puts "Would you like to encrypt or decrypt a password?"
+password_method = gets.chomp
+
+# Asks user for the password
+# Expects user input
+
+puts "What is the password?"
+password = gets.chomp
+
+# If password_method is encrypt, call the encrypt method using the
+# password input provided
+
+# If password_method is decrypt, call the decrypt method using the
+# password input provided
+
+# Exit program
