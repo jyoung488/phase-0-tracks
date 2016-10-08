@@ -43,7 +43,11 @@ if x = (secret.length - 1)
   for x in letters_array [0..-1]
   unless letters_array == " "
   y = reverse_alpha.index(x).next
-  answers << reverse_alpha[y]
+    end
+    if reverse_alpha[y].nil?
+      answers << "z"
+    else
+      answers << reverse_alpha[y]
   end
 end
   puts answers.join ("")
