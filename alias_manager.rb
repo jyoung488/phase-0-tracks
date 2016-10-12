@@ -3,38 +3,53 @@
 # change vowels to next vowel in 'aeiou'
 # change consonants to next consonant
 
-def name_switch(full_name)
+puts "What's your name?"
+name = gets.chomp.split
 
-name_array = full_name.split
-
-new_first_name = name_array[1]
-new_last_name = name_array[0]
-
-switched_name = "#{new_first_name} " + "#{new_last_name}"
-switched_name_array = switched_name
-end
-
-def next_vowel(name_switch)
-switched_name_array = name_switch.split("")
+new_first = name[1].downcase.split("")
+new_last = name[0].downcase.split("")
 vowels = "aeiou".split("")
 consonants = "bcdfghjklmnpqrstvwxyz".split("")
 
-new_name = []
-index = 0
+new_secret_first = []
+new_secret_last = []
 
-switched_name_array.each do | letter |
+new_first.map! do | letter |
   if vowels.include? letter
-    x = vowels [index + 1]
-    new_name << x
+    unless letter == "u"
+    new_secret_first << vowels[(vowels.index letter).next]
+    end
+    if letter == "u"
+    new_secret_first << "a"
+    end
   elsif consonants.include? letter
-    x = consonants[index + 1]
-    new_name << x
-  else
-    nil
-  end
+    unless letter == "z"
+    new_secret_first << consonants[(consonants.index letter).next]
+    end
+    if letter == "z"
+    new_secret_first << "b"
+    end
 end
+new_first = new_secret_first.join("")
 end
 
-puts "What is your real name?"
-full_name = gets.chomp
-puts next_vowel(name_switch(full_name))
+new_last.map! do |letter|
+    if vowels.include? letter
+    unless letter == "u"
+    new_secret_last << vowels[(vowels.index letter).next]
+    end
+    if letter == "u"
+    new_secret_last << "a"
+    end
+  elsif consonants.include? letter
+    unless letter == "z"
+    new_secret_last << consonants[(consonants.index letter).next]
+    end
+    if letter == "z"
+    new_secret_last << "b"
+    end
+end
+new_last = new_secret_last.join("")
+end
+
+puts "#{new_first} ".capitalize + "#{new_last}".capitalize
