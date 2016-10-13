@@ -3,6 +3,7 @@
 # change vowels to next vowel in 'aeiou'
 # change consonants to next consonant
 
+alias_database = {}
 name = ""
 
 while name != "quit"
@@ -59,5 +60,13 @@ end
 new_last = new_secret_last.join("")
 end
 
-puts new_first.capitalize + " " + new_last.capitalize
+new_alias = "#{new_first} ".capitalize + "#{new_last.capitalize}"
+puts new_alias
+
+alias_database[name.to_sym] = new_alias
 end
+
+# store all names and aliases
+# output all hash keys and values in a sentence
+
+alias_database.each { |name, nickname| puts "The alias of #{name} is #{nickname}." }
