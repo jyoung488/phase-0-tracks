@@ -30,3 +30,22 @@ end
 fibs(100)
 
 fibs(100)[-1] == 218922995834555169026
+
+#First take the input of the array from the user 
+#Figure out how long the array is (length)
+#left element > right element , if left is bigger than we swap 
+# if it is less than we keep it the same 
+# looping until the array is sorted
+
+def bubble_sort(arr)
+ sorted = false
+ until sorted
+   (arr.length - 1).times do |index|
+     if arr[index] > arr[index + 1]
+       arr[index], arr[index + 1] = arr[index + 1], arr[index]
+       sorted = true 
+     end
+   end
+ end
+ arr
+end
