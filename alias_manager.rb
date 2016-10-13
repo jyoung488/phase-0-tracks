@@ -3,15 +3,18 @@
 # change vowels to next vowel in 'aeiou'
 # change consonants to next consonant
 
-loop do
+name = ""
+
+while name != "quit"
 
 puts "What's your name? Type 'quit' to exit"
-name = gets.chomp.split
-
+name = gets.chomp
 break if name == "quit"
 
-new_first = name[1].downcase.split("")
-new_last = name[0].downcase.split("")
+split_name = name.split
+
+new_first = split_name[1].downcase.split("")
+new_last = split_name[0].downcase.split("")
 vowels = "aeiou".split("")
 consonants = "bcdfghjklmnpqrstvwxyz".split("")
 
