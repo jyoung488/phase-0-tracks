@@ -40,12 +40,15 @@ fibs(100)[-1] == 218922995834555169026
 def bubble_sort(arr)
  sorted = false
  until sorted
-   (arr.length - 1).times do |index|
+    sorted = true
+    (arr.length - 1).times do |index|
      if arr[index] > arr[index + 1]
        arr[index], arr[index + 1] = arr[index + 1], arr[index]
-       sorted = true 
+       sorted = false 
      end
    end
  end
  arr
 end
+
+bubble_sort([3, 30, 89])
