@@ -28,6 +28,7 @@ def fibs(num)
 end
 
 fibs(100)
+fibs(100)[-1]
 
 #First take the input of the array from the user 
 #Figure out how long the array is (length)
