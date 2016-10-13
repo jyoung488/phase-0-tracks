@@ -29,8 +29,6 @@ end
 
 fibs(100)
 
-fibs(100)[-1] == 218922995834555169026
-
 #First take the input of the array from the user 
 #Figure out how long the array is (length)
 #left element > right element , if left is bigger than we swap 
