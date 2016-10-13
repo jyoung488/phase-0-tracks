@@ -62,4 +62,4 @@ alias_database[name.to_sym] = new_alias
 end
 
 
-alias_database.each { |name, nickname| puts "The alias of #{name} is #{nickname}." }
+alias_database.each { |name, nickname| puts "The alias of #{name} is #{nickname}!" }
