@@ -52,3 +52,4 @@ def bubble_sort(arr)
 end
 
 bubble_sort([3, 30, 89])
+bubble_sort([1, 5, 3, 7])
