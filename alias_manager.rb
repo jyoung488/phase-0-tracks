@@ -1,16 +1,11 @@
-# ask for spy's real name and output fake name
-# swap first and last name
-# change vowels to next vowel in 'aeiou'
-# change consonants to next consonant
-
 alias_database = {}
 name = ""
 
 while name != "quit"
 
-puts "What's your name? Type 'quit' to exit"
-name = gets.chomp
-break if name == "quit"
+    puts "What's your name? Type 'quit' to exit"
+    name = gets.chomp
+    break if name == "quit"
 
 split_name = name.split
 
@@ -66,7 +61,5 @@ puts new_alias
 alias_database[name.to_sym] = new_alias
 end
 
-# store all names and aliases
-# output all hash keys and values in a sentence
 
 alias_database.each { |name, nickname| puts "The alias of #{name} is #{nickname}." }
