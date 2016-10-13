@@ -41,9 +41,13 @@ state_capitols = {
 }
 
 state_capitols.delete_if { |state, city| state.length < 6}
+p state_capitols
 
 state_capitols.keep_if { |state, city| state.length < 6}
+p state_capitols
 
 state_capitols.reject! { |state, city| city.length == 6}
+p state_capitols
 
 state_capitols.select! { |state, city| city.include? "A" }
+p state_capitols
