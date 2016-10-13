@@ -3,8 +3,12 @@
 # change vowels to next vowel in 'aeiou'
 # change consonants to next consonant
 
-puts "What's your name?"
+loop do
+
+puts "What's your name? Type 'quit' to exit"
 name = gets.chomp.split
+
+break if name == "quit"
 
 new_first = name[1].downcase.split("")
 new_last = name[0].downcase.split("")
@@ -52,4 +56,5 @@ end
 new_last = new_secret_last.join("")
 end
 
-puts "#{new_first} ".capitalize + "#{new_last}".capitalize
+puts new_first.capitalize + " " + new_last.capitalize
+end
