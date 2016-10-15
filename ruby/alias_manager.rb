@@ -41,6 +41,30 @@ end
 
 # return full name with proper capitalization
 
+def swap_consonants(name)
+    consonants = "bcdfghjklmnpqrstvwxyz"
+    consonants_array = consonants.split("")
+    name_array = []
+    
+    index = 0
+    
+    while index < name.length
+        if name[index] == "z"
+            name_array << "b"
+        elsif consonants_array.include? name[index]
+            x = consonants_array.index(name[index]) + 1
+            name_array << consonants_array[x]
+        else
+            name_array << name[index]
+        end
+        index += 1
+    end
+    
+    newAlias = name_array.join("")
+    capitalized_alias = "#{newAlias.split[0].capitalize} #{newAlias.split[1].capitalize}"
+    capitalized_alias
+end
+
 # ask for user input of name
 
 puts "What is your name?"
@@ -48,4 +72,4 @@ name = gets.chomp
 
 # call methods
 
-p next_vowel(swap_name(name))
+p swap_consonants(next_vowel(swap_name(name)))
