@@ -1,6 +1,12 @@
 # define method that swaps first and last name
 # downcase the input so the rest of the methods work
 
+def swap_name(name)
+    separated_name = name.split(" ")
+    new_name = "#{separated_name[1]} #{separated_name[0]}"
+    new_name.downcase
+end
+
 # takes each vowel and moves it over one
 # returns value of new the next vowel
 # create edge case for "u" to equal "a"
@@ -14,4 +20,9 @@
 
 # ask for user input of name
 
+puts "What is your name?"
+name = gets.chomp
+
 # call methods
+
+p swap_name(name)
