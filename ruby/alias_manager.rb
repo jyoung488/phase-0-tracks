@@ -11,6 +11,29 @@ end
 # returns value of new the next vowel
 # create edge case for "u" to equal "a"
 
+def next_vowel(name)
+    vowels = ["a", "e", "i", "o", "u"]
+    name_array = []
+    
+    index = 0
+    
+    while index < name.length
+    
+        if name[index] == "u"
+            name_array << "a"
+            
+        elsif vowels.include? name[index]
+            x = vowels.index(name[index]) + 1
+            name_array << vowels[x]
+            
+        else
+            name_array << name[index]
+        end
+    index += 1
+    end
+    name_array.join("")
+end
+
 # define a method that moves each consonant to the next one
 # define consonants as an array
 # return value of next consonant
@@ -25,4 +48,4 @@ name = gets.chomp
 
 # call methods
 
-p swap_name(name)
+p next_vowel(swap_name(name))
