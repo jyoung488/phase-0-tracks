@@ -1,72 +1,17 @@
-# ask for spy's real name and output fake name
-# swap first and last name
-# change vowels to next vowel in 'aeiou'
-# change consonants to next consonant
+# define method that swaps first and last name
+# downcase the input so the rest of the methods work
 
-alias_database = {}
-name = ""
+# takes each vowel and moves it over one
+# returns value of new the next vowel
+# create edge case for "u" to equal "a"
 
-while name != "quit"
+# define a method that moves each consonant to the next one
+# define consonants as an array
+# return value of next consonant
+# create edge case for "z" to equal "b"
 
-puts "What's your name? Type 'quit' to exit"
-name = gets.chomp
-break if name == "quit"
+# return full name with proper capitalization
 
-split_name = name.split
+# ask for user input of name
 
-new_first = split_name[1].downcase.split("")
-new_last = split_name[0].downcase.split("")
-vowels = "aeiou".split("")
-consonants = "bcdfghjklmnpqrstvwxyz".split("")
-
-new_secret_first = []
-new_secret_last = []
-
-new_first.map! do | letter |
-  if vowels.include? letter
-    unless letter == "u"
-    new_secret_first << vowels[(vowels.index letter).next]
-    end
-    if letter == "u"
-    new_secret_first << "a"
-    end
-  elsif consonants.include? letter
-    unless letter == "z"
-    new_secret_first << consonants[(consonants.index letter).next]
-    end
-    if letter == "z"
-    new_secret_first << "b"
-    end
-end
-new_first = new_secret_first.join("")
-end
-
-new_last.map! do |letter|
-    if vowels.include? letter
-    unless letter == "u"
-    new_secret_last << vowels[(vowels.index letter).next]
-    end
-    if letter == "u"
-    new_secret_last << "a"
-    end
-  elsif consonants.include? letter
-    unless letter == "z"
-    new_secret_last << consonants[(consonants.index letter).next]
-    end
-    if letter == "z"
-    new_secret_last << "b"
-    end
-end
-new_last = new_secret_last.join("")
-end
-
-new_alias = "#{new_first} ".capitalize + "#{new_last.capitalize}"
-puts new_alias
-
-alias_database[name.to_sym] = new_alias
-end
-
-# store all names and aliases
-# output all hash keys and values in a sentence
-
-alias_database.each { |name, nickname| puts "The alias of #{name} is #{nickname}." }
+# call methods
