@@ -27,7 +27,7 @@ class Puppy
       puts "*shake all over*"
     end
   end
-  
+
   def initialize
     puts "Initializing new puppy instance ..."
   end
@@ -40,3 +40,22 @@ Fido.speak(2)
 Fido.roll_over
 Fido.dog_years(7)
 Fido.shake("right")
+
+class Phone
+  def initialize
+    puts "Initializing new phone instance ..."
+  end
+
+  def call(name)
+    puts "Calling #{name}!"
+    name
+  end
+
+  def ring(times)
+    puts "ring" * times
+  end
+end
+
+home_phone = Phone.new
+home_phone.call("Adam")
+home_phone.ring(8)
