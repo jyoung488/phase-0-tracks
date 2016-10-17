@@ -12,6 +12,11 @@ class Puppy
   def roll_over
     puts "*rolls over*"
   end
+
+  def dog_years(age)
+    dog_age = age * 7
+    p dog_age
+  end
 end
 
 Fido = Puppy.new
@@ -19,3 +24,4 @@ Fido = Puppy.new
 Fido.fetch("ball")
 Fido.speak(2)
 Fido.roll_over
+Fido.dog_years(7)
