@@ -44,13 +44,16 @@ puts "This is a #{Santa1.gender} Santa."
 puts "Santa is #{Santa1.age} and #{Santa1.ethnicity}."
 
 
-santas = []
-
 example_genders = ["female", "male", "Prefer not to respond", "N/A", "gender fluid"]
 example_ethnicities = ["Chinese", "Italian", "American", "Ethiopian", "Canadian"]
 
-20.times do |i|
-  santas << Santa.new(example_genders.sample, example_ethnicities.sample)
+Lots_of_Santas = []
+5.times do
+  Lots_of_Santas << Santa.new(example_genders.sample, example_ethnicities.sample)
 end
 
-p santas
+Lots_of_Santas.each do |new_santa|
+  puts "This Santa is #{new_santa.age}, #{new_santa.gender}, #{new_santa.ethnicity}!"
+end
+
+
