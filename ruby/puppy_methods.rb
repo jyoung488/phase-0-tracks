@@ -59,3 +59,6 @@ end
 home_phone = Phone.new
 home_phone.call("Adam")
 home_phone.ring(8)
+
+50.times do Phone.new
+  end
