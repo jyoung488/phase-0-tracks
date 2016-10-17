@@ -16,7 +16,7 @@ class Santa
     @gender = gender
     @ethnicity = ethnicity
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    @age = 0
+    @age = rand(0..140)
   end
 
   def celebrate_birthday
@@ -49,6 +49,8 @@ santas = []
 example_genders = ["female", "male", "Prefer not to respond", "N/A", "gender fluid"]
 example_ethnicities = ["Chinese", "Italian", "American", "Ethiopian", "Canadian"]
 
-example_ethnicities.length.times do |i|
-  santas << Santa.new(example_genders[i], example_ethnicities[i])
+20.times do |i|
+  santas << Santa.new(example_genders.sample, example_ethnicities.sample)
 end
+
+p santas
