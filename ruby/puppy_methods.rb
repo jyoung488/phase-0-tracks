@@ -17,6 +17,17 @@ class Puppy
     dog_age = age * 7
     p dog_age
   end
+
+  def shake(side)
+    if side == "right"
+      puts "*shake right paw*"
+    elsif side == "left"
+      puts "*shake left paw*"
+    else
+      puts "*shake all over*"
+    end
+  end
+
 end
 
 Fido = Puppy.new
@@ -25,3 +36,4 @@ Fido.fetch("ball")
 Fido.speak(2)
 Fido.roll_over
 Fido.dog_years(7)
+Fido.shake("")
