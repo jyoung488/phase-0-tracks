@@ -64,3 +64,8 @@ grid_of_phones = []
 
 50.times do (grid_of_phones << Phone.new)
   end
+
+grid_of_phones.each do |i| i.call("Adam")
+end
+grid_of_phones.each do |i| i.ring(2)
+end
