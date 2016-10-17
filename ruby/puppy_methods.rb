@@ -27,7 +27,10 @@ class Puppy
       puts "*shake all over*"
     end
   end
-
+  
+  def initialize
+    puts "Initializing new puppy instance ..."
+  end
 end
 
 Fido = Puppy.new
