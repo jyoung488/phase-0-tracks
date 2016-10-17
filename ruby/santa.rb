@@ -28,6 +28,14 @@ class Santa
     puts "The new ranking is #{@reindeer_ranking}"
   end
 
+  def gender
+    @gender
+  end
+
+  def gender=(set_gender)
+    @gender = set_gender
+  end
+
 end
 
 Santa1 = Santa.new("Female", "Asian")
@@ -36,7 +44,8 @@ Santa1.speak
 Santa1.eat_milk_and_cookies("gingerbread")
 Santa1.celebrate_birthday
 Santa1.get_mad_at("Vixen")
-
+Santa1.gender = "female"
+puts "This is a #{Santa1.gender} Santa."
 
 
 santas = []
