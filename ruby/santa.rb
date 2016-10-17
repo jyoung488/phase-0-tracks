@@ -21,12 +21,22 @@ class Santa
     puts @age
   end
 
+  def get_mad_at(reindeer_name)
+    @reindeer_ranking.delete_at(@reindeer_ranking.index(reindeer_name))
+    @reindeer_ranking << reindeer_name
+    @reindeer_ranking
+    puts "The new ranking is #{@reindeer_ranking}"
+  end
+
 end
 
 Santa1 = Santa.new("Female", "Asian")
 
 Santa1.speak
 Santa1.eat_milk_and_cookies("gingerbread")
+Santa1.celebrate_birthday
+Santa1.get_mad_at("Vixen")
+
 
 
 santas = []
@@ -37,6 +47,3 @@ example_ethnicities = ["Chinese", "Italian", "American", "Ethiopian", "Canadian"
 example_ethnicities.length.times do |i|
   santas << Santa.new(example_genders[i], example_ethnicities[i])
 end
-
-Santa1.celebrate_birthday
-Santa1.celebrate_birthday
