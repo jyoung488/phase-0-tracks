@@ -16,6 +16,11 @@ class Santa
     @age = 0
   end
 
+  def celebrate_birthday
+    @age = @age + 1
+    puts @age
+  end
+
 end
 
 Santa1 = Santa.new("Female", "Asian")
@@ -33,4 +38,5 @@ example_ethnicities.length.times do |i|
   santas << Santa.new(example_genders[i], example_ethnicities[i])
 end
 
-p santas
+Santa1.celebrate_birthday
+Santa1.celebrate_birthday
