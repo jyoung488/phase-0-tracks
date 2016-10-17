@@ -1,4 +1,7 @@
 class Santa
+  attr_reader :age, :ethnicity
+  attr_accessor :gender
+
   def speak
     puts "Ho, ho, ho! Haaaappy holidays!"
   end
@@ -28,21 +31,6 @@ class Santa
     puts "The new ranking is #{@reindeer_ranking}"
   end
 
-  def gender
-    @gender
-  end
-
-  def gender=(set_gender)
-    @gender = set_gender
-  end
-
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
-  end
 end
 
 Santa1 = Santa.new("Female", "Asian")
