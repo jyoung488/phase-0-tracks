@@ -15,9 +15,22 @@ class Santa
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
     @age = 0
   end
+
 end
 
 Santa1 = Santa.new("Female", "Asian")
 
 Santa1.speak
 Santa1.eat_milk_and_cookies("gingerbread")
+
+
+santas = []
+
+example_genders = ["female", "male", "Prefer not to respond", "N/A", "gender fluid"]
+example_ethnicities = ["Chinese", "Italian", "American", "Ethiopian", "Canadian"]
+
+example_ethnicities.length.times do |i|
+  santas << Santa.new(example_genders[i], example_ethnicities[i])
+end
+
+p santas
