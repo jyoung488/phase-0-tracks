@@ -55,5 +55,3 @@ end
 Lots_of_Santas.each do |new_santa|
   puts "This Santa is #{new_santa.age}, #{new_santa.gender}, #{new_santa.ethnicity}!"
 end
-
-
