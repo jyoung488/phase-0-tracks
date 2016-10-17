@@ -36,6 +36,13 @@ class Santa
     @gender = set_gender
   end
 
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
+  end
 end
 
 Santa1 = Santa.new("Female", "Asian")
@@ -46,6 +53,7 @@ Santa1.celebrate_birthday
 Santa1.get_mad_at("Vixen")
 Santa1.gender = "female"
 puts "This is a #{Santa1.gender} Santa."
+puts "Santa is #{Santa1.age} and #{Santa1.ethnicity}."
 
 
 santas = []
