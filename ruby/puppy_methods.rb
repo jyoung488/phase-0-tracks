@@ -36,4 +36,4 @@ Fido.fetch("ball")
 Fido.speak(2)
 Fido.roll_over
 Fido.dog_years(7)
-Fido.shake("")
+Fido.shake("right")
