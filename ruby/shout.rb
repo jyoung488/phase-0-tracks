@@ -22,3 +22,11 @@ module Shout
     words + " yay!!!"
   end
 end
+
+class Friend
+  include Shout
+end
+
+class Tea_Kettle
+  include Shout
+end
