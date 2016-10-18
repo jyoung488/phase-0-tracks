@@ -42,6 +42,13 @@ add_item("milk", grocery_list)
   # delete item key
 # output: print hash list
 
+def delete_item(item, list)
+  list.delete(item)
+  p list
+end
+
+delete_item("milk", grocery_list)
+
 # Method to update the quantity of an item
 # input: item name and new quantity
 # steps:
