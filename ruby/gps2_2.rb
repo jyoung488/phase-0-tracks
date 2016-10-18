@@ -55,9 +55,19 @@ delete_item("milk", grocery_list)
   # set item name key to new quantity
 # output: print hash list
 
+def change_quantity(list, item, new_qty)
+  list[item] = new_qty
+  p list
+end
+
+change_quantity(grocery_list, "oranges", 10)
+
 # Method to print a list and make it look pretty
 # input: hash name
 # steps:
   # puts statement saying "Here's your list:"
   # iterate through each key and value in a sentence
 # output: formatted hash
+
+
+
