@@ -69,5 +69,11 @@ change_quantity(grocery_list, "oranges", 10)
   # iterate through each key and value in a sentence
 # output: formatted hash
 
+def print_list(list)
+  puts "Here's your grocery list:"
+  list.each do |item, quantity|
+    puts "#{item}: #{quantity}"
+  end
+end
 
-
+print_list(grocery_list)
