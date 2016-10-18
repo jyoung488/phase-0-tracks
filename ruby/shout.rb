@@ -15,11 +15,11 @@ puts Shout.yelling_happily("I can't wait")
 
 module Shout
   def angrily(words)
-    words + "!!!" + " :("
+    puts words + "!!!" + " :("
   end
 
   def happily(words)
-    words + " yay!!!"
+    puts words + " yay!!!"
   end
 end
 
@@ -30,3 +30,9 @@ end
 class Tea_Kettle
   include Shout
 end
+
+oldFriend = Friend.new
+oldFriend.happily("So good to see you")
+
+TeaKettle = Tea_Kettle.new
+TeaKettle.angrily("I'm finished boiling")
