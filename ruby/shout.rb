@@ -33,6 +33,8 @@ end
 
 oldFriend = Friend.new
 oldFriend.happily("So good to see you")
+oldFriend.angrily("Where have you been?")
 
 TeaKettle = Tea_Kettle.new
 TeaKettle.angrily("I'm finished boiling")
+TeaKettle.happily("I'm full of water")
