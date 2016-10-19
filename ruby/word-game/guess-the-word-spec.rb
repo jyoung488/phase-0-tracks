@@ -1,0 +1,1 @@
+require-relative 'guess-the-word'
