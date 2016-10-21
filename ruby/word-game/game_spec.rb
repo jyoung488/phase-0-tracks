@@ -11,9 +11,9 @@
 # game ends if reached maximum guesses that's equal to word length
 # game ends if player guesses word
 
-require_relative 'guess-the-word'
+require_relative 'hangman_game'
 
-describe Wordgame do
-  let(:game) { Wordgame.new("example") }
+describe Hangman do
+  let(:game) { Hangman.new("example") }
   
 end

@@ -1,6 +1,6 @@
 # GAME CLASS
 
-class Wordgame
+class Hangman
   attr_accessor :word, :correct_guesses, :wrong_guesses, :word_progress
   attr_reader :max_guesses, :is_over
 
@@ -51,9 +51,11 @@ end
 
 # USER INTERFACE
 
+=begin
+
 puts "Player 1: Provide a word for Player 2 to guess."
 word = gets.chomp
-new_game = Wordgame.new(word)
+new_game = Hangman.new(word)
 
 puts "Player 2: Your word to guess is #{new_game.word.length} letters long: #{new_game.word_progress}."
 
@@ -65,3 +67,5 @@ while !new_game.is_over
   new_game.show_progress(letter)
   new_game.game_over
 end
+
+=end
