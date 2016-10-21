@@ -20,7 +20,7 @@ class Hangman
       puts "You already guessed #{letter}, silly!"
     end
    
-    if !word.include? letter
+    if !@word.include? letter
       puts "To quote Trump: WRONG. You have #{@word.length - @max_guesses} chance(s) left. Guess again:"
     end
   end
@@ -45,12 +45,16 @@ class Hangman
       false
     end
   end
+
+
 end
 
 # USER INTERFACE
 
-puts "Player 1: Provide a word for Player 2 to guess."
-word = gets.chomp
+require 'io/console'
+
+puts "Player 1: Provide a word for Player 2 to guess. You won't see it typed so make sure it's right!"
+word = STDIN.noecho(&:gets).chomp
 new_game = Hangman.new(word)
 
 puts "Player 2: Your word to guess is #{new_game.word.length} letters long: #{new_game.word_progress}."
@@ -58,6 +62,7 @@ puts "Player 2: Your word to guess is #{new_game.word.length} letters long: #{ne
 while !new_game.is_over
   puts "Guess a letter --->"
   letter = gets.chomp
+  
   puts new_game.show_progress(letter)
   new_game.add_guess(letter)
   new_game.game_over
