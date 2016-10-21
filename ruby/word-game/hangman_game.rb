@@ -13,15 +13,15 @@ class Hangman
   end
 
   def add_guess(letter)
-    if @guesses.include? letter
+    unless @guesses.include? letter
+      @guesses << letter
+      @max_guesses += 1
+    else
       puts "You already guessed #{letter}, silly!"
-    elsif @word.include? letter
-      @guesses << letter
-      @max_guesses += 1
-    else !word.include? letter
-      @guesses << letter
-      puts "To quote Trump: WRONG. Guess again:"
-      @max_guesses += 1
+    end
+   
+    if !word.include? letter
+      puts "To quote Trump: WRONG. You have #{@word.length - @max_guesses} chance(s) left. Guess again:"
     end
   end
 
@@ -48,7 +48,6 @@ class Hangman
 end
 
 # USER INTERFACE
-
 
 puts "Player 1: Provide a word for Player 2 to guess."
 word = gets.chomp
