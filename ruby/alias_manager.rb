@@ -1,72 +1,75 @@
-# ask for spy's real name and output fake name
-# swap first and last name
-# change vowels to next vowel in 'aeiou'
-# change consonants to next consonant
+# define method that swaps first and last name
+# downcase the input so the rest of the methods work
 
-alias_database = {}
-name = ""
+def swap_name(name)
+    separated_name = name.split(" ")
+    new_name = "#{separated_name[1]} #{separated_name[0]}"
+    new_name.downcase
+end
 
-while name != "quit"
+# takes each vowel and moves it over one
+# returns value of new the next vowel
+# create edge case for "u" to equal "a"
 
-puts "What's your name? Type 'quit' to exit"
+def next_vowel(name)
+    vowels = ["a", "e", "i", "o", "u"]
+    name_array = []
+    
+    index = 0
+    
+    while index < name.length
+    
+        if name[index] == "u"
+            name_array << "a"
+            
+        elsif vowels.include? name[index]
+            x = vowels.index(name[index]) + 1
+            name_array << vowels[x]
+            
+        else
+            name_array << name[index]
+        end
+    index += 1
+    end
+    name_array.join("")
+end
+
+# define a method that moves each consonant to the next one
+# define consonants as an array
+# return value of next consonant
+# create edge case for "z" to equal "b"
+
+# return full name with proper capitalization
+
+def swap_consonants(name)
+    consonants = "bcdfghjklmnpqrstvwxyz"
+    consonants_array = consonants.split("")
+    name_array = []
+    
+    index = 0
+    
+    while index < name.length
+        if name[index] == "z"
+            name_array << "b"
+        elsif consonants_array.include? name[index]
+            x = consonants_array.index(name[index]) + 1
+            name_array << consonants_array[x]
+        else
+            name_array << name[index]
+        end
+        index += 1
+    end
+    
+    newAlias = name_array.join("")
+    capitalized_alias = "#{newAlias.split[0].capitalize} #{newAlias.split[1].capitalize}"
+    capitalized_alias
+end
+
+# ask for user input of name
+
+puts "What is your name?"
 name = gets.chomp
-break if name == "quit"
 
-split_name = name.split
+# call methods
 
-new_first = split_name[1].downcase.split("")
-new_last = split_name[0].downcase.split("")
-vowels = "aeiou".split("")
-consonants = "bcdfghjklmnpqrstvwxyz".split("")
-
-new_secret_first = []
-new_secret_last = []
-
-new_first.map! do | letter |
-  if vowels.include? letter
-    unless letter == "u"
-    new_secret_first << vowels[(vowels.index letter).next]
-    end
-    if letter == "u"
-    new_secret_first << "a"
-    end
-  elsif consonants.include? letter
-    unless letter == "z"
-    new_secret_first << consonants[(consonants.index letter).next]
-    end
-    if letter == "z"
-    new_secret_first << "b"
-    end
-end
-new_first = new_secret_first.join("")
-end
-
-new_last.map! do |letter|
-    if vowels.include? letter
-    unless letter == "u"
-    new_secret_last << vowels[(vowels.index letter).next]
-    end
-    if letter == "u"
-    new_secret_last << "a"
-    end
-  elsif consonants.include? letter
-    unless letter == "z"
-    new_secret_last << consonants[(consonants.index letter).next]
-    end
-    if letter == "z"
-    new_secret_last << "b"
-    end
-end
-new_last = new_secret_last.join("")
-end
-
-new_alias = "#{new_first} ".capitalize + "#{new_last.capitalize}"
-puts new_alias
-
-alias_database[name.to_sym] = new_alias
-end
-
-# store all names and aliases
-# output all hash keys and values in a sentence
-
-alias_database.each { |name, nickname| puts "The alias of #{name} is #{nickname}." }
+p swap_consonants(next_vowel(swap_name(name)))
