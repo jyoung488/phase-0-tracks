@@ -1,37 +1,52 @@
 # game class
 
-class WordGame
-  attr_accessor :word, :word_progress, :guess_count, :game_over
+class Hangman
+  attr_accessor :word, :correct_guesses, :wrong_guesses, :word_progress
+  attr_reader :max_guesses, :is_over
 
   def initialize(word)
-    @max_guesses = word.length
-    @word = word.split("")
-    @word_progress = ""
-    @guessed = []
+    @word = word.downcase.split("")
+    @correct_guesses = []
+    @wrong_guesses = []
+    @max_guesses = 0
+    @word_progress = "_" * word.length
     @is_over = false
   end
 
-  def hide_word
-    @word_progress = "_" * @word.length
+  def add_guess(letter)
+    if (@wrong_guesses.include? letter) || (@correct_guesses.include? letter)
+      puts "You already guessed #{letter}, silly!"
+    elsif @word.include? letter
+      @correct_guesses << letter
+      @max_guesses += 1
+    else !word.include? letter
+      @wrong_guesses << letter
+      puts "To quote Trump: WRONG. Guess again:"
+      @max_guesses += 1
+    end
+  end
+
+  def show_progress(letter)
+    @word.each_index do |index|
+      if @word[index] == letter
+        @word_progress[index] = letter
+      end
+    end
+    @word_progress
     puts @word_progress
   end
 
-  def match_letter(letter)
-    if @guessed.include? letter
-      puts "You already guessed #{letter}! Try again."
+  def game_over
+    if @word_progress == @word.join("")
+      puts "You guessed the word! You win!"
+      @is_over = true
+    elsif @max_guesses >= @word.length
+      puts "You really think you can try more than #{@max_guesses} times? That's way too many, you lose!"
+      @is_over = true
     else
-      @guessed << letter
-      @word.each_index do |index|
-        if @word[index] == letter
-          @word_progress[index] = letter
-        else
-          @word_progress[index] = "_"
-        end
-      end
+      false
     end
-    puts @word_progress
-  end  
-
+  end
 end
 
   # initialize method
@@ -49,14 +64,20 @@ end
     # greets the user and asks for an input
     # initializes new instance of game with input as first word
 
-puts "Welcome to my game! Please enter a word for your friend to guess."
+puts "Player 1: Provide a word for Player 2 to guess."
 word = gets.chomp
-newGame = WordGame.new(word)
-newGame.hide_word
+new_game = Hangman.new(word)
 
-puts "Enter a letter to guess the word:"
-letter = gets.chomp
-newGame.match_letter(letter)
+puts "Player 2: Your word to guess is #{new_game.word.length} letters long: #{new_game.word_progress}."
+
+while !new_game.is_over
+  puts "Guess a letter --->"
+  letter = gets.chomp
+
+  new_game.add_guess(letter)
+  new_game.show_progress(letter)
+  new_game.game_over
+end
 
     # asks for letter guesses input
       # iterate over word's letters to see if input equals any
