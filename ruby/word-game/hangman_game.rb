@@ -1,26 +1,25 @@
 # GAME CLASS
 
 class Hangman
-  attr_accessor :word, :correct_guesses, :wrong_guesses, :word_progress
+  attr_accessor :word, :guesses, :word_progress
   attr_reader :max_guesses, :is_over
 
   def initialize(word)
     @word = word.downcase.split("")
-    @correct_guesses = []
-    @wrong_guesses = []
+    @guesses = []
     @max_guesses = 0
     @word_progress = "_" * word.length
     @is_over = false
   end
 
   def add_guess(letter)
-    if (@wrong_guesses.include? letter) || (@correct_guesses.include? letter)
+    if @guesses.include? letter
       puts "You already guessed #{letter}, silly!"
     elsif @word.include? letter
-      @correct_guesses << letter
+      @guesses << letter
       @max_guesses += 1
     else !word.include? letter
-      @wrong_guesses << letter
+      @guesses << letter
       puts "To quote Trump: WRONG. Guess again:"
       @max_guesses += 1
     end
@@ -33,7 +32,6 @@ class Hangman
       end
     end
     @word_progress
-    puts @word_progress
   end
 
   def game_over
@@ -51,7 +49,6 @@ end
 
 # USER INTERFACE
 
-=begin
 
 puts "Player 1: Provide a word for Player 2 to guess."
 word = gets.chomp
@@ -62,10 +59,7 @@ puts "Player 2: Your word to guess is #{new_game.word.length} letters long: #{ne
 while !new_game.is_over
   puts "Guess a letter --->"
   letter = gets.chomp
-
+  puts new_game.show_progress(letter)
   new_game.add_guess(letter)
-  new_game.show_progress(letter)
   new_game.game_over
 end
-
-=end

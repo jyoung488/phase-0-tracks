@@ -18,10 +18,10 @@ describe Hangman do
   end
 
   it "add to the guess counter" do
-    expect { game.add_guess("x") }.to change{game.max_guesses}.from(0).to(1)
+    expect { game.add_guess("x") }.to change {game.max_guesses}.from(0).to(1)
   end
 
   it "add incorrect guess to array" do
-    expect { game.add_guess("o") }.to change{game.wrong_guesses}
+    expect { game.add_guess("o") }.to change {game.guesses}
   end
 end
