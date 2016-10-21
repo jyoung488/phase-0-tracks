@@ -17,11 +17,16 @@ class WordGame
   end
 
   def match_letter(letter)
-    @word.each_index do |index|
-      if @word[index] == letter
-        @word_progress[index] = letter
-      else
-        @word_progress[index] = "_"
+    if @guessed.include? letter
+      puts "You already guessed #{letter}! Try again."
+    else
+      @guessed << letter
+      @word.each_index do |index|
+        if @word[index] == letter
+          @word_progress[index] = letter
+        else
+          @word_progress[index] = "_"
+        end
       end
     end
     puts @word_progress
