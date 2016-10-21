@@ -1,32 +1,33 @@
-  # game class
+# game class
 
-  class WordGame
-    attr_reader :guess_count
-    attr_accessor :word, :word_progress
+class WordGame
+  attr_accessor :word, :word_progress, :guess_count, :game_over
 
-    def initialize(word)
-      @guess_count = 0
-      @word = word.downcase
-      @word_progress = ""
-      @guesses = []
-    end
-
-    def hide_word
-      puts "_" * @word.length
-    end
-
-    def match(letter)
-      @word.chars.each do |chr|
-        if chr == letter
-          @word_progress << letter
-        else
-          @word_progress << "_"
-        end
-      end
-      puts @word_progress
-    end
-
+  def initialize(word)
+    @max_guesses = word.length
+    @word = word.split("")
+    @word_progress = ""
+    @guessed = []
+    @is_over = false
   end
+
+  def hide_word
+    @word_progress = "_" * @word.length
+    puts @word_progress
+  end
+
+  def match_letter(letter)
+    @word.each_index do |index|
+      if @word[index] == letter
+        @word_progress[index] = letter
+      else
+        @word_progress[index] = "_"
+      end
+    end
+    puts @word_progress
+  end  
+
+end
 
   # initialize method
     # expects argument of a word
@@ -46,11 +47,11 @@
 puts "Welcome to my game! Please enter a word for your friend to guess."
 word = gets.chomp
 newGame = WordGame.new(word)
-
-puts "Thank you! Enter letters to guess this word:"
 newGame.hide_word
+
+puts "Enter a letter to guess the word:"
 letter = gets.chomp
-newGame.match(letter)
+newGame.match_letter(letter)
 
     # asks for letter guesses input
       # iterate over word's letters to see if input equals any
