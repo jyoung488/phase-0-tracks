@@ -12,3 +12,5 @@ function reverseString(string) {
 }
 
   reverseString("hello");
+
+  var backwardsWord = reverseString("computer");
