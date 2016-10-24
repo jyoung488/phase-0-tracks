@@ -26,6 +26,15 @@ class VirusPredictor
     speed_of_spread(@population_density, @state)
   end
 
+  def self.national_report
+    STATE_DATA.each do |state, demographics|
+      nationalInstance = VirusPredictor.new(state, STATE_DATA[state][:population_density], STATE_DATA[state][:population])
+      nationalInstance.virus_effects
+    end
+    #california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
+#california.virus_effects
+  end
+
 # sets below methods to private so they can't be called upon
   private
 
@@ -80,7 +89,7 @@ end
 
 # DRIVER CODE
  # initialize VirusPredictor for each state
-
+=begin
 
 alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
 alabama.virus_effects
@@ -93,7 +102,9 @@ california.virus_effects
 
 alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
 alaska.virus_effects
+=end
 
+VirusPredictor.national_report
 
 #=======================================================================
 # Reflection Section
