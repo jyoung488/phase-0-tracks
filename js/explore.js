@@ -3,8 +3,8 @@
 // for each index of letter, minus index variable and output that letter
 
 function reverseString(string) {
-  index = 0
-  for (var index = 0; index < string.length; index++) {
+  index = string.length
+  for (var index = string.length; index >= 0; index--) {
     console.log(string[index]);
   }
 }
