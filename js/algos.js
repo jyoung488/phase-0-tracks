@@ -15,4 +15,15 @@ function longestPhrase(array) {
     console.log(phrase);
   }
 
+  // define function taking 2 parameters of key-value pairs
+  // compare the keys of each pair
+  // if either key of pair 1 matches the key in pair 2, return true
+  // if neither match, return false
+
+  function matchKeys(pair1, pair2) {
+    
+  }
+
+
 longestPhrase(["hello there", "this is the longest phrase", "hi"]);
+
