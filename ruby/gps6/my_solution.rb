@@ -22,8 +22,8 @@ class VirusPredictor
 # returns the speed_of_spread method but runs both predicted_deaths and speed_of_spread methods
 
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths(@population_density, @population)
+    speed_of_spread(@population_density)
   end
 
   def self.national_report
@@ -31,8 +31,6 @@ class VirusPredictor
       nationalInstance = VirusPredictor.new(state, STATE_DATA[state][:population_density], STATE_DATA[state][:population])
       nationalInstance.virus_effects
     end
-    #california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
-#california.virus_effects
   end
 
 # sets below methods to private so they can't be called upon
@@ -55,7 +53,7 @@ class VirusPredictor
       number_of_deaths = (@population * 0.05).floor
     end
 
-    print "#{@state} will lose #{number_of_deaths} people in this outbreak"
+    print "#{@state} will lose #{deaths} people in this outbreak"
 
   end
 
@@ -65,21 +63,21 @@ class VirusPredictor
   def speed_of_spread(population_density, state) #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
-    speed = 0.0
+    duration = 0.0
 
     if @population_density >= 200
-      speed += 0.5
+      duration += 0.5
     elsif @population_density >= 150
-      speed += 1
+      duration += 1
     elsif @population_density >= 100
-      speed += 1.5
+      duration += 1.5
     elsif @population_density >= 50
-      speed += 2
+      duration += 2
     else
-      speed += 2.5
+      duration += 2.5
     end
 
-    puts " and will spread across the state in #{speed} months.\n\n"
+    puts " and will spread across the state in #{duration} months.\n\n"
 
   end
 
@@ -108,3 +106,11 @@ VirusPredictor.national_report
 
 #=======================================================================
 # Reflection Section
+
+#1. One is a giant hash, while uses a value that is its own hash.
+#2. Require_relative allows data to be brought in from a file using the relative path.
+#   Require pulls in items using an absolute path.
+#   Require_relative is more specific and adaptable.
+#3. .each, .map, .inspect
+#4. Some were listed repetitively. Some weren't needed to run the method. Another was poorly named.
+#5. Iterating through a more complex hash, learning when to refactor and ways to do so
