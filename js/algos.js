@@ -21,7 +21,16 @@ function longestPhrase(array) {
   // if neither match, return false
 
   function matchKeys(pair1, pair2) {
-    
+    pair1Keys = [];
+    pair2Keys = [];
+
+    for (var key in pair1) {
+      pair1Keys.push(key);
+    }
+
+    for (var key2 in pair2) {
+      pair2Keys.push(key2);
+    }
   }
 
 
