@@ -41,6 +41,16 @@ function longestPhrase(array) {
   }
 
 
+// define function that takes an integer as a parameter
+// set that parameter to create an array of phrases with that integer as the length
+// so array.length = integer
+// each word in the array should be a random length between 1-10 letters
+
+function randomPhrases(num) {
+  
+}
+
+
 longestPhrase(["hello there", "this is the longest phrase", "hi"]);
 matchKeys({name: "Steven", age: 54}, {name: "Tamir", age: 54});
 matchKeys({color: "orange", age: 20}, {hobby: "sleeping", food: "apples"});
