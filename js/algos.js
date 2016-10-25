@@ -31,8 +31,17 @@ function longestPhrase(array) {
     for (var key2 in pair2) {
       pair2Keys.push(key2);
     }
+
+    if (pair1Keys[0] == pair2Keys[0]) {
+      console.log("true"); }
+    else if (pair1Keys[1] == pair2Keys[1]) {
+      console.log("true");
+    }
+    else {console.log("false");}
   }
 
 
 longestPhrase(["hello there", "this is the longest phrase", "hi"]);
+matchKeys({name: "Steven", age: 54}, {name: "Tamir", age: 54});
+matchKeys({color: "orange", age: 20}, {hobby: "sleeping", food: "apples"});
 
