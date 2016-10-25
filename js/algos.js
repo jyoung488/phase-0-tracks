@@ -46,8 +46,17 @@ function longestPhrase(array) {
 // so array.length = integer
 // each word in the array should be a random length between 1-10 letters
 
+function randomString(length) {
+    var text = "";
+    var possible = "abcdefghijklmnopqrstuvwxyz";
+    for(var i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+
 function randomPhrases(num) {
-  
+
 }
 
 
