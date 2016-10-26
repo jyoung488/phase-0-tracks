@@ -73,11 +73,9 @@
   // generates then prints array
   // feed array into longestPhrase function and print result
 
-  for (i = 0; i < 10; i++) {
+  for (var i = 0; i < 10; i++) {
     var finalArray = randomPhrases(4);
     console.log(finalArray);
     var finalPhrase = longestPhrase(finalArray);
     console.log(finalPhrase);
   }
-
-
