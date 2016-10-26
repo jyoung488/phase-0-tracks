@@ -12,7 +12,7 @@ function longestPhrase(array) {
       phrase = array[index];
     }
   }
-    console.log(phrase);
+    return phrase;
   }
 
   // define function taking 2 parameters of key-value pairs
@@ -69,6 +69,22 @@ function randomPhrases(num) {
 longestPhrase(["hello there", "this is the longest phrase", "hi"]);
 matchKeys({name: "Steven", age: 54}, {name: "Tamir", age: 54});
 matchKeys({color: "orange", age: 20}, {hobby: "sleeping", food: "apples"});
+
+// loop 10 times
+// generates array
+// prints array
+// feed array into longestPhrase function
+// prints result of longest phrase
+
+for (i = 0; i < 10; i++) {
+  var finalArray = randomPhrases(4);
+  console.log(finalArray);
+  var finalPhrase = longestPhrase(finalArray);
+  console.log(finalPhrase);
+}
+
+
+
 
 
 
