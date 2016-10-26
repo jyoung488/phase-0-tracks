@@ -56,11 +56,19 @@ function randomString(length) {
 }
 
 function randomPhrases(num) {
+  var phrases = [];
+  var phrasesLength = 0;
 
+  for (phrasesLength = 0; phrasesLength < num; phrasesLength++) {
+    phrases.push(randomString(Math.floor(Math.random() * 10) +1));
+  }
+  return phrases;
 }
 
 
 longestPhrase(["hello there", "this is the longest phrase", "hi"]);
 matchKeys({name: "Steven", age: 54}, {name: "Tamir", age: 54});
 matchKeys({color: "orange", age: 20}, {hobby: "sleeping", food: "apples"});
+
+
 
