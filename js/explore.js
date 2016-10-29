@@ -8,6 +8,7 @@ function reverseString(string) {
   for (var index = string.length - 1; index >= 0; index--) {
     newString += string[index];
   }
+  
   return newString;
 }
 
