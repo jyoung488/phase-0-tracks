@@ -46,3 +46,35 @@
       DELETE FROM bands WHERE name="Senses Fail";
     Output:
       None
+
+JOIN METHODS
+
+Input - CROSS JOIN:
+  SELECT bands.id, bands.name FROM bands CROSS JOIN venues;
+Output:
+  1|Hannibal Buress
+  1|Hannibal Buress
+  1|Hannibal Buress
+  2|Young The Giant
+  2|Young The Giant
+  2|Young The Giant
+  3|Yellowcard
+  3|Yellowcard
+  3|Yellowcard
+  4|Taking Back Sunday
+  4|Taking Back Sunday
+  4|Taking Back Sunday
+
+  Input - LEFT OUTER JOIN:
+    SELECT bands.name, date FROM bands LEFT JOIN venues ON bands.venue=venues.id;
+  Output:
+    Hannibal Buress|Oct. 16
+    Young The Giant|Oct. 22
+    Yellowcard|Oct. 22
+    Taking Back Sunday|Oct. 23
+
+  Input - INNER JOIN:
+    SELECT bands.name, date, venue FROM bands INNER JOIN venues ON bands.venue=venues.id WHERE date="Oct. 22";
+  Output:
+    Young The Giant|Oct. 22|1
+    Yellowcard|Oct. 22|2
