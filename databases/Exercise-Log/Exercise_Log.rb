@@ -22,5 +22,13 @@ create_gyms = <<-SQL
   )
 SQL
 
+create_friends = <<-SQL
+  CREATE TABLE IF NOT EXISTS friends(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255)
+  )
+SQL
+
 db.execute(create_workouts_table)
 db.execute(create_gyms)
+db.execute(create_friends)
