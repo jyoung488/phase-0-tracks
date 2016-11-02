@@ -3,7 +3,7 @@ require 'faker'
 
 db = SQLite3::Database.new("workouts.db")
 
-create_table_cmd = <<-SQL
+create_workouts_table = <<-SQL
   CREATE TABLE IF NOT EXISTS workouts(
     id INTEGER PRIMARY KEY,
     name VARCHAR(255),
@@ -14,4 +14,13 @@ create_table_cmd = <<-SQL
   )
 SQL
 
-db.execute(create_table_cmd)
+create_gyms = <<-SQL
+  CREATE TABLE IF NOT EXISTS gyms(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    city VARCHAR(255)
+  )
+SQL
+
+db.execute(create_workouts_table)
+db.execute(create_gyms)
