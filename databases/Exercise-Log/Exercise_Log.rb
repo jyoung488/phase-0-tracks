@@ -1,16 +1,20 @@
+# BUSINESS LOGIC
+
 require 'sqlite3'
 require 'faker'
 
 db = SQLite3::Database.new("workouts.db")
+db.execute("PRAGMA foreign_keys = ON")
 
 create_workouts_table = <<-SQL
   CREATE TABLE IF NOT EXISTS workouts(
     id INTEGER PRIMARY KEY,
     name VARCHAR(255),
-    gym INT,
-    friend INT,
-    FOREIGN KEY (gym) REFERENCES gyms(name),
-    FOREIGN KEY (friend) REFERENCES friends(name)
+    gym_id INT,
+    friend_id INT,
+    day REAL,
+    FOREIGN KEY(gym_id) REFERENCES gyms(id),
+    FOREIGN KEY(friend_id) REFERENCES friends(id)
   )
 SQL
 
@@ -32,3 +36,31 @@ SQL
 db.execute(create_workouts_table)
 db.execute(create_gyms)
 db.execute(create_friends)
+
+def add_workout(db, workout, gym, friend)
+  db.execute("INSERT INTO workouts (name) VALUES (?)", [workout])
+end
+
+def add_gym(db, gym)
+  db.execute("INSERT INTO gyms (name) VALUES (?)", [gym])
+end
+
+def add_friend(db, friend)
+  db.execute("INSERT INTO friends (name) VALUES (?)", [friend])
+end
+
+def past_workouts(db)
+   workouts = db.execute("SELECT workouts.day, gyms.name, workouts.name, friends.name
+    FROM workouts, gyms, friends
+    WHERE workouts.gym_id=gyms.id
+    AND workouts.friend_id=friends.id")
+   workouts
+end
+
+# add_workout(db, 'yoga', 1, 1)
+puts past_workouts(db)
+
+# USER INTERFACE
+
+
+
