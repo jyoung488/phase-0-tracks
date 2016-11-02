@@ -57,10 +57,21 @@ def past_workouts(db)
    workouts
 end
 
+def view_friends(db)
+  friends = db.execute ("SELECT * FROM friends")
+  friends
+end
+
+def view_gyms(db)
+  gyms = db.execute("SELECT * FROM gyms")
+  gyms
+end
+
 # add_workout(db, 'yoga', 1, 1)
-puts past_workouts(db)
+past_workouts(db)
 
 # USER INTERFACE
+
 
 
 
