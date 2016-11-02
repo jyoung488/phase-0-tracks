@@ -19,22 +19,22 @@ create_table_cmd = <<-SQL
   )
 SQL
 
-# create a kittens table (if it's not there already)
+# # create a kittens table (if it's not there already)
 db.execute(create_table_cmd)
 
-# add a test kitten
+# # add a test kitten
 # db.execute("INSERT INTO kittens (name, age) VALUES ('Bob', 10)")
 
-# add LOOOOTS of kittens!
-# so. many. kittens. 
-#KittenExplosion
-def create_kitten(db, name, age)
-  db.execute("INSERT INTO kittens (name, age) VALUES (?, ?)", [name, age])
-end
+# # add LOOOOTS of kittens!
+# # so. many. kittens. 
+# #KittenExplosion
+ def create_kitten(db, name, age)
+   db.execute("INSERT INTO kittens (name, age) VALUES (?, ?)", [name, age])
+ end
 
-10000.times do
-  create_kitten(db, Faker::Name.name, 0)
-end
+ 10000.times do
+   create_kitten(db, Faker::Name.name, 0)
+ end
 
 # explore ORM by retrieving data
 # kittens = db.execute("SELECT * FROM kittens")
