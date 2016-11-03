@@ -38,10 +38,12 @@ db.execute(create_gyms)
 db.execute(create_friends)
 
 def past_workouts(db)
-  log = db.execute("SELECT * FROM workouts")
+  log = db.execute("SELECT workouts.day, workouts.exercise, gyms.name, friends.friend_name
+    FROM workouts, gyms, friends WHERE workouts.gym=gyms.id
+    AND workouts.friend=friends.id;")
   
   log.each do |workout|
-    puts "#{workout['day']} - #{workout['exercise']} at #{workout['gym']} with #{workout['friend']}"
+    puts "#{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
   end
 end
 
@@ -73,12 +75,40 @@ def list_friends(db)
   end
 end
 
-# define method that shows all friends
-
 # USER INTERFACE
 
 # puts "Hello! Welcome to your exercise log. Here are your past workouts:"
 # past_workouts(db)
+
+puts "Would you like to view or add info?"
+choice = gets.chomp
+
+if choice.include? "view"
+  puts "what would you like to view: workouts, gyms, or friends?"
+  view_choice = gets.chomp
+
+  if view_choice.include? "workouts"
+    past_workouts(db)
+  elsif view_choice.include? "gyms"
+    list_gyms(db)
+  elsif view_choice.include? "friend"
+    list_friends(db)
+  else
+    puts "i didn't understand"
+  end
+elsif choice.include? "add"
+  puts "would you like to add a workout, a gym, or a friend?"
+  add_choice = gets.chomp
+
+  if add_choice.include? "workout"
+    puts "here are your added gyms and friends - enter the ID of the gym/friend when prompted"
+  elsif add_choice.include? "gym"
+  elsif add_choice.include? "friend"
+  end
+else
+  puts "I didn't understand"
+end
+  
 
 # # ask user if they would like to view tables or add info
 #   # if view
