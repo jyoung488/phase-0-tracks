@@ -79,91 +79,82 @@ end
 
 # puts "Hello! Welcome to your exercise log. Here are your past workouts:"
 # past_workouts(db)
+choice = ""
 
-puts "Would you like to view or add info?"
-choice = gets.chomp
+while choice != "exit"
 
-if choice.include? "view"
-  puts "what would you like to view: workouts, gyms, or friends?"
-  view_choice = gets.chomp
+  puts "Would you like to view or add info? Type 'exit' to quit program."
+  choice = gets.chomp.downcase
 
-  if view_choice.include? "workouts"
-    past_workouts(db)
-  elsif view_choice.include? "gyms"
-    list_gyms(db)
-  elsif view_choice.include? "friend"
-    list_friends(db)
+  if choice.include? "view"
+    puts "what would you like to view: workouts, gyms, or friends?"
+    view_choice = gets.chomp
+
+    if view_choice.include? "workouts"
+      past_workouts(db)
+    elsif view_choice.include? "gyms"
+      list_gyms(db)
+    elsif view_choice.include? "friend"
+      list_friends(db)
+    else
+      puts "i didn't understand"
+    end
+  elsif choice.include? "add"
+    puts "would you like to add a workout, a gym, or a friend?"
+    add_choice = gets.chomp
+
+    if add_choice.include? "workout"
+      puts "here are your added gyms and friends - enter the number of the gym/friend when prompted"
+      puts "Gyms:"
+      list_gyms(db)
+      puts "Friends:"
+      list_friends(db)
+
+      puts "What's the date of your workout in YYYY-MM-DD format?"
+      day = gets.chomp
+
+      puts "What workout did you do?"
+      exercise = gets.chomp
+
+      puts "What gym number did you go to?"
+      gym = gets.to_i
+
+      puts "Who did you go with?"
+      friend = gets.to_i
+
+      add_workout(db, exercise, gym, friend, day)
+
+      puts "Thank you! Here's your past workouts now:"
+      past_workouts(db)
+    elsif add_choice.include? "gym"
+      puts "Here are your current favorite gyms:"
+      list_gyms(db)
+
+      puts "What's your new gym?"
+      new_gym = gets.chomp
+
+      puts "What city is #{new_gym} in?"
+      new_city = gets.chomp
+
+      add_gym(db, new_gym, new_city)
+
+      list_gyms(db)
+    elsif add_choice.include? "friend"
+      puts "Here are your current workout buddies:"
+      list_friends(db)
+
+      puts "What's your workout buddy's name?"
+      new_friend = gets.chomp
+
+      add_friend(db, new_friend)
+
+      list_friends(db)
+    end
+  elsif choice == "exit"
+    break    
   else
-    puts "i didn't understand"
+    puts "I didn't understand."
   end
-elsif choice.include? "add"
-  puts "would you like to add a workout, a gym, or a friend?"
-  add_choice = gets.chomp
-
-  if add_choice.include? "workout"
-    puts "here are your added gyms and friends - enter the number of the gym/friend when prompted"
-    puts "Gyms:"
-    list_gyms(db)
-    puts "Friends:"
-    list_friends(db)
-
-    puts "What's the date of your workout in YYYY-MM-DD format?"
-    day = gets.chomp
-
-    puts "What workout did you do?"
-    exercise = gets.chomp
-
-    puts "What gym number did you go to?"
-    gym = gets.to_i
-
-    puts "Who did you go with?"
-    friend = gets.to_i
-
-    add_workout(db, exercise, gym, friend, day)
-
-    puts "Thank you! Here's your past workouts now:"
-    past_workouts(db)
-  elsif add_choice.include? "gym"
-    puts "Here are your current favorite gyms:"
-    list_gyms(db)
-
-    puts "What's your new gym?"
-    new_gym = gets.chomp
-
-    puts "What city is #{new_gym} in?"
-    new_city = gets.chomp
-
-    add_gym(db, new_gym, new_city)
-
-    list_gyms(db)
-  elsif add_choice.include? "friend"
-    puts "Here are your current workout buddies:"
-    list_friends(db)
-
-    puts "What's your workout buddy's name?"
-    new_friend = gets.chomp
-
-    add_friend(db, new_friend)
-
-    list_friends(db)
-  end
-else
-  puts "I didn't understand"
 end
-  
-
-# # ask user if they would like to view tables or add info
-#   # if view
-#     # ask if they want to view gyms, friends, or workouts
-#       # if gyms - show all columns from gyms table
-#       # if friends - show all columns from friends table
-#       # if workouts - past_workouts(db)
-#   # add info to gyms, friends, or workouts
-#     # if workouts - add_workout
-#     # if gyms - add_gym
-#     # if friends - add_friend
-
-#   # repeat until 'exit'
-
 
 
