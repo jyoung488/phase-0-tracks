@@ -101,8 +101,41 @@ elsif choice.include? "add"
   add_choice = gets.chomp
 
   if add_choice.include? "workout"
-    puts "here are your added gyms and friends - enter the ID of the gym/friend when prompted"
+    puts "here are your added gyms and friends - enter the number of the gym/friend when prompted"
+    puts "Gyms:"
+    list_gyms(db)
+    puts "Friends:"
+    list_friends(db)
+
+    puts "What's the date of your workout in YYYY-MM-DD format?"
+    day = gets.chomp
+
+    puts "What workout did you do?"
+    exercise = gets.chomp
+
+    puts "What gym number did you go to?"
+    gym = gets.to_i
+
+    puts "Who did you go with?"
+    friend = gets.to_i
+
+    add_workout(db, exercise, gym, friend, day)
+
+    puts "Thank you! Here's your past workouts now:"
+    past_workouts(db)
   elsif add_choice.include? "gym"
+    puts "Here are your current favorite gyms:"
+    list_gyms(db)
+
+    puts "What's your new gym?"
+    new_gym = gets.chomp
+
+    puts "What city is #{new_gym} in?"
+    new_city = gets.chomp
+
+    add_gym(db, new_gym, new_city)
+
+    list_gyms(db)
   elsif add_choice.include? "friend"
   end
 else
@@ -123,19 +156,5 @@ end
 
 #   # repeat until 'exit'
 
-# puts "What's the date in YYYY-MM-DD format?"
-# day = gets.chomp
 
-# puts "What workout did you do?"
-# exercise = gets.chomp
 
-# puts "What gym did you go to?"
-# gym = gets.chomp
-
-# puts "Who did you go with?"
-# friend = gets.chomp
-
-# add_workout(db, exercise, gym, friend, day)
-
-# puts "Thank you! Here's your past workouts now:"
-# past_workouts(db)
