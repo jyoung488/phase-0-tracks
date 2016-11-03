@@ -137,6 +137,15 @@ elsif choice.include? "add"
 
     list_gyms(db)
   elsif add_choice.include? "friend"
+    puts "Here are your current workout buddies:"
+    list_friends(db)
+
+    puts "What's your workout buddy's name?"
+    new_friend = gets.chomp
+
+    add_friend(db, new_friend)
+
+    list_friends(db)
   end
 else
   puts "I didn't understand"
