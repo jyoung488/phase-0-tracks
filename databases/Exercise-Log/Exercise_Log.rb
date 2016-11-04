@@ -77,14 +77,12 @@ def list_friends(db)
 end
 
 def by_date(db, date)
-  log = db.execute("SELECT workouts.day, workouts.exercise, gyms.name, friends.friend_name
-    FROM workouts, gyms, friends WHERE workouts.gym=gyms.id
-    AND workouts.friend=friends.id;")
+  log = db.execute("SELECT * FROM workouts, gyms, friends WHERE workouts.gym=gyms.id
+    AND workouts.friend=friends.id
+    AND workouts.day = '#{date}'")
   
   log.each do |workout|
-    if workout['day']=date
     puts "#{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
-    end
   end
 end
 
@@ -109,69 +107,72 @@ while choice != "exit"
 
 case choice
   when /view/
-    puts "what would you like to view: workouts, gyms, friends, or by date?"
-    view_choice = gets.chomp
+    puts "View workouts, gyms, friends, or by date?"
+    view = gets.chomp
 
-    if view_choice.include? "workouts"
+    case view
+    when /workout/
       past_workouts(db)
-    elsif view_choice.include? "gyms"
+    when /gym/
       list_gyms(db)
-    elsif view_choice.include? "friend"
+    when /friend/
       list_friends(db)
-    elsif view_choice.include? "date"
-      puts "What day's workouts would you like to see in YYYY-MM-DD format?"
+    when /date/
+      puts "Date in YYYY-MM-DD format:"
       date = gets.chomp
 
+      puts "Your workout(s) for #{date}:"
       by_date(db, date)
     else
-      puts "i didn't understand"
+      puts "I didn't understand"
     end
   when /add/
-    puts "would you like to add a workout, a gym, or a friend?"
-    add_choice = gets.chomp
+    puts "Add a workout, a gym, or a friend?"
+    add = gets.chomp
 
-    if add_choice.include? "workout"
-      puts "here are your added gyms and friends - enter the number of the gym/friend when prompted"
-      puts "Gyms:"
+    case add
+    when /workout/
+      puts "Your gyms and friends - enter the number of the gym/friend when prompted"
+      puts "Gyms-----"
       list_gyms(db)
-      puts "Friends:"
+      puts "Friends-----"
       list_friends(db)
 
-      puts "What's the date of your workout in YYYY-MM-DD format?"
+      puts "Date of workout in YYYY-MM-DD format:"
       day = gets.chomp
 
-      puts "What workout did you do?"
+      puts "Exercise:"
       exercise = gets.chomp
 
-      puts "What gym number did you go to?"
+      puts "Gym Number:"
       gym = gets.to_i
 
-      puts "Who did you go with?"
+      puts "Friend Number:"
       friend = gets.to_i
 
       add_workout(db, exercise, gym, friend, day)
 
       puts "Thank you! Here's your past workouts now:"
       past_workouts(db)
-    elsif add_choice.include? "gym"
+    when /gym/
       puts "Here are your current favorite gyms:"
       list_gyms(db)
 
-      puts "What's your new gym?"
+      puts "New gym name:"
       new_gym = gets.chomp
 
-      puts "What city is #{new_gym} in?"
+      puts "City of #{new_gym}:"
       new_city = gets.chomp
 
       add_gym(db, new_gym, new_city)
 
       puts "Your saved gyms:"
       list_gyms(db)
-    elsif add_choice.include? "friend"
+    when /friend/
       puts "Here are your current workout buddies:"
       list_friends(db)
 
-      puts "What's your workout buddy's name?"
+      puts "New workout buddy's name:"
       new_friend = gets.chomp
 
       add_friend(db, new_friend)
@@ -180,17 +181,18 @@ case choice
       list_friends(db)
     end
   when /delete/
-    puts "Would you like to delete from workouts, gyms, or friends?"
+    puts "Delete from workouts, gyms, or friends?"
     delete_from = gets.chomp
-      if delete_from.include? "workouts"
+      case delete_from
+      when /workout/
         past_workouts(db)
-      elsif delete_from.include? "gyms"
+      when /gym/
         list_gyms(db)
-      elsif delete_from.include? "friends"
+      when /friend/
         list_friends(db)
       end
 
-    puts "What's the number of the item you'd like to delete?"
+    puts "Number of the item to delete:"
     delete_id = gets.to_i
 
     delete_item(db, delete_from, delete_id)
