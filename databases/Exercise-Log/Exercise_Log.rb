@@ -82,7 +82,7 @@ def by_date(db, date)
     AND workouts.day = '#{date}'")
   
   log.each do |workout|
-    puts "#{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
+    puts "#{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
   end
 end
 
