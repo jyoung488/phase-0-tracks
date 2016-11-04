@@ -1,7 +1,6 @@
 # BUSINESS LOGIC
 
 require 'sqlite3'
-require 'faker'
 
 db = SQLite3::Database.new("workouts.db")
 db.results_as_hash = true
@@ -75,6 +74,18 @@ def list_friends(db)
   end
 end
 
+def by_date(db, date)
+  log = db.execute("SELECT workouts.day, workouts.exercise, gyms.name, friends.friend_name
+    FROM workouts, gyms, friends WHERE workouts.gym=gyms.id
+    AND workouts.friend=friends.id;")
+  
+  log.each do |workout|
+    if workout['day']=date
+    puts "#{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
+    end
+  end
+end
+
 # USER INTERFACE
 
 # puts "Hello! Welcome to your exercise log. Here are your past workouts:"
@@ -87,7 +98,7 @@ while choice != "exit"
   choice = gets.chomp.downcase
 
   if choice.include? "view"
-    puts "what would you like to view: workouts, gyms, or friends?"
+    puts "what would you like to view: workouts, gyms, friends, or by date?"
     view_choice = gets.chomp
 
     if view_choice.include? "workouts"
@@ -96,6 +107,11 @@ while choice != "exit"
       list_gyms(db)
     elsif view_choice.include? "friend"
       list_friends(db)
+    elsif view_choice.include? "date"
+      puts "What day's workouts would you like to see in YYYY-MM-DD format?"
+      date = gets.chomp
+
+      by_date(db, date)
     else
       puts "i didn't understand"
     end
