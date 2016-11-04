@@ -107,7 +107,8 @@ while choice != "exit"
   puts "Would you like to view, add, or delete info? Type 'exit' to quit program."
   choice = gets.chomp.downcase
 
-  if choice.include? "view"
+case choice
+  when /view/
     puts "what would you like to view: workouts, gyms, friends, or by date?"
     view_choice = gets.chomp
 
@@ -125,7 +126,7 @@ while choice != "exit"
     else
       puts "i didn't understand"
     end
-  elsif choice.include? "add"
+  when /add/
     puts "would you like to add a workout, a gym, or a friend?"
     add_choice = gets.chomp
 
@@ -178,7 +179,7 @@ while choice != "exit"
       puts "Your saved friends:"
       list_friends(db)
     end
-  elsif choice.include? "delete"
+  when /delete/
     puts "Would you like to delete from workouts, gyms, or friends?"
     delete_from = gets.chomp
       if delete_from.include? "workouts"
@@ -194,7 +195,7 @@ while choice != "exit"
 
     delete_item(db, delete_from, delete_id)
 
-  elsif choice == "exit"
+  when /exit/
     break    
   else
     puts "I didn't understand."
