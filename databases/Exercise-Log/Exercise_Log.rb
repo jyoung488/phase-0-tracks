@@ -40,7 +40,8 @@ def past_workouts(db)
   log = db.execute("SELECT workouts.id, workouts.day, workouts.exercise, gyms.name, friends.friend_name
     FROM workouts, gyms, friends 
     WHERE workouts.gym=gyms.id
-    AND workouts.friend=friends.id;")
+    AND workouts.friend=friends.id
+    ORDER BY workouts.day")
   
   log.each do |workout|
     puts "#{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
