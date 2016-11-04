@@ -83,7 +83,7 @@ choice = ""
 
 while choice != "exit"
 
-  puts "Would you like to view or add info? Type 'exit' to quit program."
+  puts "Would you like to view, add, or delete info? Type 'exit' to quit program."
   choice = gets.chomp.downcase
 
   if choice.include? "view"
@@ -150,6 +150,7 @@ while choice != "exit"
 
       list_friends(db)
     end
+
   elsif choice == "exit"
     break    
   else
