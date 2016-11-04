@@ -91,6 +91,10 @@ def delete_item(db, table, id_number)
   db.execute("DELETE FROM #{table} WHERE id=#{id_number}")
 end
 
+def update(db, table, id_number, column_name, new_info)
+  db.execute("UPDATE #{table} SET #{column_name}=#{new_info} WHERE id=#{id_number}")
+end
+
 # USER INTERFACE
 
 # puts "Hello! Welcome to your exercise log. Here are your past workouts:"
@@ -99,7 +103,7 @@ choice = ""
 
 while choice != "exit"
 
-  puts "Would you like to view, add, delete, or update info? Type 'exit' to quit program."
+  puts "Would you like to view, add, or delete info? Type 'exit' to quit program."
   choice = gets.chomp.downcase
 
   if choice.include? "view"
@@ -187,7 +191,8 @@ while choice != "exit"
     puts "What's the number of the item you'd like to delete?"
     delete_id = gets.to_i
 
-    delete_item(db, delete_from, delete_id)    
+    delete_item(db, delete_from, delete_id)
+
   elsif choice == "exit"
     break    
   else
