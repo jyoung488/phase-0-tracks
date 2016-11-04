@@ -37,8 +37,9 @@ db.execute(create_gyms)
 db.execute(create_friends)
 
 def past_workouts(db)
-  log = db.execute("SELECT workouts.day, workouts.exercise, gyms.name, friends.friend_name
-    FROM workouts, gyms, friends WHERE workouts.gym=gyms.id
+  log = db.execute("SELECT workouts.id, workouts.day, workouts.exercise, gyms.name, friends.friend_name
+    FROM workouts, gyms, friends 
+    WHERE workouts.gym=gyms.id
     AND workouts.friend=friends.id;")
   
   log.each do |workout|
@@ -86,6 +87,10 @@ def by_date(db, date)
   end
 end
 
+def delete_item(db, table, id_number)
+  db.execute("DELETE FROM #{table} WHERE id=#{id_number}")
+end
+
 # USER INTERFACE
 
 # puts "Hello! Welcome to your exercise log. Here are your past workouts:"
@@ -94,7 +99,7 @@ choice = ""
 
 while choice != "exit"
 
-  puts "Would you like to view, add, or delete info? Type 'exit' to quit program."
+  puts "Would you like to view, add, delete, or update info? Type 'exit' to quit program."
   choice = gets.chomp.downcase
 
   if choice.include? "view"
@@ -154,6 +159,7 @@ while choice != "exit"
 
       add_gym(db, new_gym, new_city)
 
+      puts "Your saved gyms:"
       list_gyms(db)
     elsif add_choice.include? "friend"
       puts "Here are your current workout buddies:"
@@ -164,9 +170,24 @@ while choice != "exit"
 
       add_friend(db, new_friend)
 
+      puts "Your saved friends:"
       list_friends(db)
     end
+  elsif choice.include? "delete"
+    puts "Would you like to delete from workouts, gyms, or friends?"
+    delete_from = gets.chomp
+      if delete_from.include? "workouts"
+        past_workouts(db)
+      elsif delete_from.include? "gyms"
+        list_gyms(db)
+      elsif delete_from.include? "friends"
+        list_friends(db)
+      end
 
+    puts "What's the number of the item you'd like to delete?"
+    delete_id = gets.to_i
+
+    delete_item(db, delete_from, delete_id)    
   elsif choice == "exit"
     break    
   else
