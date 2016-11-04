@@ -5,6 +5,8 @@ require 'sqlite3'
 db = SQLite3::Database.new("workouts.db")
 db.results_as_hash = true
 
+# Create tables in database if they don't already exist
+
 create_workouts = <<-SQL
   CREATE TABLE IF NOT EXISTS workouts(
     id INTEGER PRIMARY KEY,
@@ -35,6 +37,8 @@ SQL
 db.execute(create_workouts)
 db.execute(create_gyms)
 db.execute(create_friends)
+
+# Ruby methods calling SQL
 
 def past_workouts(db)
   log = db.execute("SELECT workouts.id, workouts.day, workouts.exercise, gyms.name, friends.friend_name
@@ -96,8 +100,6 @@ end
 
 # USER INTERFACE
 
-# puts "Hello! Welcome to your exercise log. Here are your past workouts:"
-# past_workouts(db)
 choice = ""
 
 while choice != "exit"
@@ -108,7 +110,7 @@ while choice != "exit"
 case choice
   when /view/
     puts "View workouts, gyms, friends, or by date?"
-    view = gets.chomp
+    view = gets.chomp.downcase
 
     case view
     when /workout/
@@ -128,7 +130,7 @@ case choice
     end
   when /add/
     puts "Add a workout, a gym, or a friend?"
-    add = gets.chomp
+    add = gets.chomp.downcase
 
     case add
     when /workout/
@@ -152,7 +154,7 @@ case choice
 
       add_workout(db, exercise, gym, friend, day)
 
-      puts "Thank you! Here's your past workouts now:"
+      puts "Nice work! Here's your past workouts now:"
       past_workouts(db)
     when /gym/
       puts "Here are your current favorite gyms:"
@@ -182,7 +184,7 @@ case choice
     end
   when /delete/
     puts "Delete from workouts, gyms, or friends?"
-    delete_from = gets.chomp
+    delete_from = gets.chomp.downcase
       case delete_from
       when /workout/
         past_workouts(db)
