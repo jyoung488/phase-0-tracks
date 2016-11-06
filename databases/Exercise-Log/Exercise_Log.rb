@@ -42,11 +42,11 @@ db.execute(create_friends)
 
 def past_workouts(db)
   log = db.execute("SELECT workouts.id, workouts.day, workouts.exercise, gyms.name, friends.friend_name
-    FROM workouts, gyms, friends 
-    WHERE workouts.gym=gyms.id
-    AND workouts.friend=friends.id
-    ORDER BY workouts.day")
-  
+  FROM workouts, gyms, friends 
+  WHERE workouts.gym=gyms.id
+  AND workouts.friend=friends.id
+  ORDER BY workouts.day")
+
   log.each do |workout|
     puts "#{workout['id']} - #{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
   end
@@ -81,10 +81,12 @@ def list_friends(db)
 end
 
 def by_date(db, date)
-  log = db.execute("SELECT * FROM workouts, gyms, friends WHERE workouts.gym=gyms.id
-    AND workouts.friend=friends.id
-    AND workouts.day = '#{date}'")
-  
+  log = db.execute("SELECT workouts.id, workouts.day, workouts.exercise, gyms.name, friends.friend_name
+  FROM workouts, gyms, friends 
+  WHERE workouts.gym=gyms.id
+  AND workouts.friend=friends.id
+  ORDER BY workouts.day")
+
   log.each do |workout|
     puts "#{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
   end
