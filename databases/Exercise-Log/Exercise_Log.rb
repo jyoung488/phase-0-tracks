@@ -48,7 +48,7 @@ def past_workouts(db)
     ORDER BY workouts.day")
   
   log.each do |workout|
-    puts "#{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
+    puts "#{workout['id']} - #{workout['day']} - #{workout['exercise']} at #{workout['name']} with #{workout['friend_name']}"
   end
 end
 
@@ -199,6 +199,13 @@ case choice
 
     delete_item(db, delete_from, delete_id)
 
+    puts "Deleted!"
+    puts "Past workouts:"
+    past_workouts(db)
+    puts "Saved gyms:"
+    list_gyms(db)
+    puts "Saved friends:"
+    list_friends(db)
   when /exit/
     break    
   else
