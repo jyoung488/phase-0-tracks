@@ -9,7 +9,7 @@ db.results_as_hash = true
 # add a query parameter
 # GET /
 get '/' do
-  "#{params[:name]} is #{params[:age]} years old."
+  "Hello World!"
 end
 
 # write a GET route with
@@ -44,3 +44,37 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
+
+get '/contact' do
+  "123 Main St.<br>
+  Nowhere, CA 92011"
+end
+
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Good job, #{name}!"
+  else
+    "Good job!"
+  end
+end
+
+get '/:first_number/plus/:second_number' do
+  first_number = params[:first_number].to_i
+  second_number = params[:second_number].to_i
+
+  total = first_number + second_number
+
+  "#{total}"
+end
+
+get '/search/:campus' do
+  student = db.execute("SELECT * FROM students WHERE campus=?", [params[:campus]])
+  student.to_s
+end
+
+
+
+
+
+
