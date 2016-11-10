@@ -6,4 +6,8 @@ $(document).ready(function() {
   $("h1").addClass("header");
 
   $("button").addClass("button");
+
+  $("body").dblclick(function() {
+    $(this).css("background-color", "#FFFFE5")
+  });
 });
